@@ -3,7 +3,7 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-
+//bodypars: gönderdiğiniz post datasını alıp obje olarak sunan modül
 const index = require('./routes/index');
 const movie = require('./routes/movie');
 const director = require('./routes/director');
@@ -12,14 +12,14 @@ const app = express();
 
 // db connection
 const db = require('./helper/db.js')();
-
+/*
 // Config
 const config = require('./config');
 app.set('api_secret_key', config.api_secret_key);
 
 // Middleware
 const verifyToken = require('./middleware/verify-token');
-
+*/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -33,9 +33,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/api', verifyToken);
+//app.use('/api', verifyToken);
 app.use('/api/movies', movie);
-app.use('/api/directors', director);
+app.use('/api/director', director);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -51,8 +51,8 @@ app.use((err, req, res, next) => {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.json({ error: { message: err.message, code: err.code } });
+   res.status(err.status || 500);
+   res.json({ error: { message: err.message, code: err.code } });
 });
 
 module.exports = app;
