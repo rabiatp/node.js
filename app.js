@@ -4,6 +4,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 //bodypars: gönderdiğiniz post datasını alıp obje olarak sunan modül
+
 const index = require('./routes/index');
 const movie = require('./routes/movie');
 const director = require('./routes/director');
@@ -12,14 +13,14 @@ const app = express();
 
 // db connection
 const db = require('./helper/db.js')();
-/*
+
 // Config
 const config = require('./config');
 app.set('api_secret_key', config.api_secret_key);
 
 // Middleware
 const verifyToken = require('./middleware/verify-token');
-*/
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -33,8 +34,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-//app.use('/api', verifyToken);
-app.use('/api/movies', movie);
+app.use('/api', verifyToken);
+app.use('/api/movie', movie);
 app.use('/api/director', director);
 
 // catch 404 and forward to error handler

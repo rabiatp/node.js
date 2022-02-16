@@ -5,22 +5,24 @@
     "scripts": {
         "start": "node ./bin/www",
         "start:dev": "nodemon ./bin/www",
-        "test": "./node_modules/.bin/mocha --exit --recursive"
+        "test": "node ./node_modules/mocha/bin/mocha --exit --recursive"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",
         "body-parser": "~1.18.2",
-        "chai": "^4.1.2",
-        "chai-http": "^3.0.0",
         "cookie-parser": "~1.4.3",
         "debug": "~2.6.9",
         "express": "^4.16.3",
         "jade": "~1.11.0",
         "jsonwebtoken": "^8.1.0",
-        "mocha": "^4.1.0",
         "mongoose": "^4.13.7",
         "morgan": "~1.9.0",
         "ms": "^2.1.3",
         "serve-favicon": "~2.4.5"
+    },
+    "devDependencies": {
+        "chai": "^4.3.6",
+        "chai-http": "^4.3.0",
+        "mocha": "^9.2.0"
     }
 }
