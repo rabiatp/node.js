@@ -108,6 +108,12 @@ router.post('/',(req,res,next) => {
 			year: { "$gte": parseInt(start_year), $gte: parseInt(end_year)},
 		}
 	);
+
+	promise.then((data) => {
+		res.json(data);
+	}).catch((err) => {
+		res.json(err);
+	})
  })
 
 

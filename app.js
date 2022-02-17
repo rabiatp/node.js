@@ -4,7 +4,6 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 //bodypars: gönderdiğiniz post datasını alıp obje olarak sunan modül
-
 const index = require('./routes/index');
 const movie = require('./routes/movie');
 const director = require('./routes/director');
@@ -35,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/api', verifyToken);
-app.use('/api/movie', movie);
+app.use('/api/movies', movie);
 app.use('/api/director', director);
 
 // catch 404 and forward to error handler
